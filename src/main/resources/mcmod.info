@@ -1,0 +1,16 @@
+[
+{
+  "modid": "aam",
+  "name": "Astral Additions",
+  "description": "Astral Sorcery Additions and Tinkers Integrations",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ArcAios26"],
+  "credits": "HellfirePVP for Astral Sorcery, SlimeKnights for Tinker Construct, and Azanor for Baubles.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

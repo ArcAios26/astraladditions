@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "astraladditions:items/astral_ring"
+  },
+  "overrides": [{
+    "predicate": {
+      "astraladditions:active": 1
+    },
+    "model": "astraladditions:item/astral_ring_on"
+  }]
+}
