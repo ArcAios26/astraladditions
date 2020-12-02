@@ -1,7 +1,10 @@
 package arcaios26.astraladditions.items.wearable;
 
 
+import arcaios26.astraladditions.network.PacketHandler;
+import arcaios26.astraladditions.network.packets.PktItemEffectRender;
 import arcaios26.astraladditions.util.ItemHelper;
+import arcaios26.astraladditions.util.Reference;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import hellfirepvp.astralsorcery.client.effect.EffectHelper;
@@ -10,6 +13,7 @@ import hellfirepvp.astralsorcery.common.base.FluidRarityRegistry;
 import hellfirepvp.astralsorcery.common.constellation.distribution.ConstellationSkyHandler;
 import hellfirepvp.astralsorcery.common.network.PacketChannel;
 import hellfirepvp.astralsorcery.common.network.packet.server.PktPlayLiquidSpring;
+import hellfirepvp.astralsorcery.common.util.ByteBufUtils;
 import hellfirepvp.astralsorcery.common.util.SkyCollectionHelper;
 import hellfirepvp.astralsorcery.common.util.data.Vector3;
 import net.minecraft.client.Minecraft;
@@ -17,6 +21,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -42,7 +47,7 @@ public class AstralRing extends Item implements IBauble {
 
     public AstralRing() {
         setRegistryName("astral_ring");
-        setTranslationKey(getRegistryName().toString());
+        setTranslationKey(Reference.MOD_ID + ".astral_ring");
         setMaxStackSize(1);
         setMaxDamage(0);
         setCreativeTab(CreativeTabs.TOOLS);
@@ -63,31 +68,38 @@ public class AstralRing extends Item implements IBauble {
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
         World worldIn = player.getEntityWorld();
-
-        if (!worldIn.isRemote && itemstack.hasTagCompound()) {
+        if (itemstack.hasTagCompound()) {
             if (itemstack.getTagCompound().getBoolean(TAG_ACTIVE)) {
-                double dstr = ConstellationSkyHandler.getInstance().getCurrentDaytimeDistribution(worldIn);
-                if (dstr <= 1E-4) return;
-                if (rand.nextFloat() < dstr && rand.nextInt(15) == 0) {
+                if (!worldIn.isRemote) {
+                    double dstr = ConstellationSkyHandler.getInstance().getCurrentDaytimeDistribution(worldIn);
+                    if (dstr <= 1E-4) return;
+                    if (rand.nextFloat() < dstr && rand.nextInt(15) == 0) {
 
-                    int oX = rand.nextInt(30) * (rand.nextBoolean() ? 1 : -1);
-                    int oZ = rand.nextInt(30) * (rand.nextBoolean() ? 1 : -1);
+                        int oX = rand.nextInt(30) * (rand.nextBoolean() ? 1 : -1);
+                        int oZ = rand.nextInt(30) * (rand.nextBoolean() ? 1 : -1);
 
-                    BlockPos pos = new BlockPos(player.getPosition()).add(oX, 0, oZ);
-                    pos = worldIn.getTopSolidOrLiquidBlock(pos);
-                    if (pos.getDistance(MathHelper.floor(player.posX), MathHelper.floor(player.posY), MathHelper.floor(player.posZ)) > 75) {
-                        return;
+                        BlockPos pos = new BlockPos(player.getPosition()).add(oX, 0, oZ);
+                        pos = worldIn.getTopSolidOrLiquidBlock(pos);
+                        if (pos.getDistance(MathHelper.floor(player.posX), MathHelper.floor(player.posY), MathHelper.floor(player.posZ)) > 75) {
+                            return;
+                        }
+
+                        FluidRarityRegistry.ChunkFluidEntry at = FluidRarityRegistry.getChunkEntry(worldIn.getChunk(pos));
+                        FluidStack display = at == null ? new FluidStack(FluidRegistry.WATER, 1) : at.tryDrain(1, false);
+                        if (display == null || display.getFluid() == null)
+                            display = new FluidStack(FluidRegistry.WATER, 1);
+                        PktPlayLiquidSpring pkt = new PktPlayLiquidSpring(display, new Vector3(pos).add(rand.nextFloat(), 0, rand.nextFloat()));
+                        PacketChannel.CHANNEL.sendToAllAround(pkt, PacketChannel.pointFromPos(worldIn, player.getPosition(), 32));
                     }
-
-                    FluidRarityRegistry.ChunkFluidEntry at = FluidRarityRegistry.getChunkEntry(worldIn.getChunk(pos));
-                    FluidStack display = at == null ? new FluidStack(FluidRegistry.WATER, 1) : at.tryDrain(1, false);
-                    if (display == null || display.getFluid() == null) display = new FluidStack(FluidRegistry.WATER, 1);
-                    PktPlayLiquidSpring pkt = new PktPlayLiquidSpring(display, new Vector3(pos).add(rand.nextFloat(), 0, rand.nextFloat()));
-                    PacketChannel.CHANNEL.sendToAllAround(pkt, PacketChannel.pointFromPos(worldIn, player.getPosition(), 32));
+                    PacketHandler.sendTo(new PktItemEffectRender(itemstack), (EntityPlayerMP) player);
                 }
-                playStarlightFieldEffect();
             }
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void playEffect() {
+        playStarlightFieldEffect();
     }
 
     @SideOnly(Side.CLIENT)
@@ -137,5 +149,10 @@ public class AstralRing extends Item implements IBauble {
     public static void toggleRing(ItemStack stack) {
         if (!ItemHelper.getOrCreateTag(stack).getBoolean(TAG_ACTIVE)) stack.getTagCompound().setBoolean(TAG_ACTIVE, true);
         else stack.getTagCompound().setBoolean(TAG_ACTIVE, false);
+    }
+
+    @Override
+    public boolean willAutoSync(ItemStack itemstack, EntityLivingBase player) {
+        return true;
     }
 }

@@ -1,7 +1,7 @@
 package arcaios26.astraladditions.events;
 
 import arcaios26.astraladditions.network.PacketHandler;
-import arcaios26.astraladditions.network.packets.KeyPressPKT;
+import arcaios26.astraladditions.network.packets.PktKeyPress;
 import arcaios26.astraladditions.util.ClientKeyHelper;
 import arcaios26.astraladditions.util.Reference;
 import net.minecraft.client.settings.KeyBinding;
@@ -17,7 +17,7 @@ public class KeyPressEvent {
         for (KeyBinding k : ClientKeyHelper.fromMc.keySet()) {
             if (k.isPressed())
             {
-                PacketHandler.sendToServer(new KeyPressPKT(ClientKeyHelper.fromMc.get(k)));
+                PacketHandler.sendToServer(new PktKeyPress(ClientKeyHelper.fromMc.get(k)));
             }
         }
     }
