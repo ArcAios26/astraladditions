@@ -24,7 +24,7 @@ import static hellfirepvp.astralsorcery.common.item.tool.ItemSkyResonator.getUpg
 public class AstralRingRecipe extends TraitRecipe {
     public AstralRingRecipe() {
         super(ShapedRecipe.Builder.newShapedRecipe("internal/altar/astral_ring", Item.getByNameOrId("astraladditions:astral_ring"))
-        .addPart(ItemsAS.skyResonator, ShapedRecipeSlot.CENTER)
+        .addPart(ItemSkyResonator.setCurrentUpgradeUnsafe(ItemSkyResonator.setUpgradeUnlocked(ItemSkyResonator.setEnhanced(new ItemStack(ItemsAS.skyResonator)), ItemSkyResonator.ResonatorUpgrade.FLUID_FIELDS), ItemSkyResonator.ResonatorUpgrade.FLUID_FIELDS), ShapedRecipeSlot.CENTER)
         .addPart(OreDictAlias.ITEM_STARMETAL_DUST, ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT, ShapedRecipeSlot.UPPER_CENTER)
         .addPart(BlocksAS.fluidLiquidStarlight, ShapedRecipeSlot.LOWER_CENTER)
         .unregisteredAccessibleShapedRecipe());

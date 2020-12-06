@@ -1,6 +1,7 @@
 package arcaios26.astraladditions.proxy;
 
 import arcaios26.astraladditions.init.ModRecipes;
+import arcaios26.astraladditions.init.ModResearch;
 import arcaios26.astraladditions.items.wearable.AstralRing;
 import arcaios26.astraladditions.network.PacketHandler;
 import net.minecraft.item.Item;
@@ -22,7 +23,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent event) {
-
+        ModResearch.init();
     }
 
     @SubscribeEvent

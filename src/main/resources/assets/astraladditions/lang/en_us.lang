@@ -1,4 +1,10 @@
+# Items
 item.astraladditions.astral_ring.name=Astral Ring
 
+# Keybinds
 key.categories.astraladditions=Astral Additions
 astraladditions.key.ring_toggle=Toggle Ring
+
+# Research Data
+research.astraladditions.astral_ring.name=Astral Ring
+journal.astraladditions.astral_ring.text=After some experimenting with the Ichosic Resonator it would appear a ring can be crafted and keyed to the resonance of both Fluid traits and Starlight concentrations. Absolutely amazing!
