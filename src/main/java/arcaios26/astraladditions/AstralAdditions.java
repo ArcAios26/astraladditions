@@ -28,6 +28,6 @@ public class AstralAdditions {
 
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event) {
-
+        proxy.postInit(event);
     }
 }
