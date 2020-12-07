@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_post",
+  "textures": {
+    "wall": "astralsorcery:blocks/black_marble_raw"
+  }
+}

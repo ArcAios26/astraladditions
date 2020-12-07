@@ -13,15 +13,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 public class BlockIWFence extends BlockFence implements IHasModel {
-    public BlockIWFence(String name, Material material, MapColor color) {
-        super(material, color);
+    public BlockIWFence(String name, CreativeTabs tab) {
+        super(Material.WOOD, MapColor.BROWN);
         setRegistryName(name);
         setTranslationKey(name);
         setHardness(1.0F);
         setHarvestLevel("axe", 0);
         setResistance(3.0F);
         setSoundType(SoundType.WOOD);
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setCreativeTab(tab);
 
         this.useNeighborBrightness = true;
 

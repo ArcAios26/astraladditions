@@ -38,12 +38,12 @@ import static arcaios26.astraladditions.util.helpers.ItemHelper.*;
 public class ItemAstralRing extends Item implements IHasModel, IBauble {
     private static Random rand = new Random();
 
-    public ItemAstralRing(String name) {
+    public ItemAstralRing(String name, CreativeTabs tab) {
         setRegistryName(name);
         setTranslationKey(name);
         setMaxStackSize(1);
         setMaxDamage(0);
-        setCreativeTab(CreativeTabs.TOOLS);
+        setCreativeTab(tab);
         addPropertyOverride(ACTIVE_NAME, ACTIVE_GETTER);
 
         ItemInit.ITEMS.add(this);

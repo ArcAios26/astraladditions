@@ -13,10 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public class BlockMarbleWall extends BlockWall implements IHasModel {
-    public BlockMarbleWall(String name, Block block) {
+    public BlockMarbleWall(String name, Block block, CreativeTabs tab) {
         super(block);
         setRegistryName(name);
         setTranslationKey(name);
+        setCreativeTab(tab);
 
         BlockInit.BLOCKS.add(this);
         ItemInit.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

@@ -1,6 +1,22 @@
 # Items
 item.ring_astral.name=Astral Ring
 
+#Blocks
+tile.block_infused_wood_fence.name=Infused Wood Fence
+tile.block_infused_wood_fence_gate.name=Infused Wood Fence Gate
+tile.block_marble_wall.name=Marble Wall
+tile.block_marble_brick_wall.name=Marble Brick Wall
+tile.block_marble_arch_wall.name=Marble Arch Wall
+tile.block_marble_chiseled_wall.name=Chiseled Marble Wall
+tile.block_marble_engraved_wall.name=Engraved Marble Wall
+tile.block_marble_runed_wall.name=Runed Marble Wall
+tile.block_black_marble_wall.name=Sooty Marble Wall
+tile.block_black_marble_brick_wall.name=SootyMarble Brick Wall
+tile.block_black_marble_arch_wall.name=Sooty Marble Arch Wall
+tile.block_black_marble_chiseled_wall.name=Sooty Chiseled Marble Wall
+tile.block_black_marble_engraved_wall.name=Sooty Engraved Marble Wall
+tile.block_black_marble_runed_wall.name=Sooty Runed Marble Wall
+
 # Keybinds
 key.categories.astraladditions=Astral Additions
 astraladditions.key.ring_toggle=Toggle Ring

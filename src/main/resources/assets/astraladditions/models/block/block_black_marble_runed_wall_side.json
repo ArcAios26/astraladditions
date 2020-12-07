@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_side",
+  "textures": {
+    "wall": "astralsorcery:blocks/black_marble_runed"
+  }
+}
