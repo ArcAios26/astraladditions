@@ -8,5 +8,5 @@ import java.util.List;
 public class ItemInit {
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
-    public static final Item ASTRAL_RING = new ItemAstralRing("ring_astral");
+    public static final Item RING_ASTRAL = new ItemAstralRing("ring_astral");
 }
