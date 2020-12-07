@@ -277,7 +277,7 @@ public class BlockIWFenceGate extends BlockHorizontal implements IHasModel {
     public boolean canBeConnectedTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
     {
         IBlockState state = world.getBlockState(pos);
-        if (state.getBlock() instanceof BlockFenceGate &&
+        if (state.getBlock() instanceof BlockIWFenceGate &&
                 state.getBlockFaceShape(world, pos, facing) == BlockFaceShape.MIDDLE_POLE)
         {
             Block connector = world.getBlockState(pos.offset(facing)).getBlock();
