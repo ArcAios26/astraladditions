@@ -1,6 +1,6 @@
 {
   "parent": "block/fence_side",
   "textures": {
-    "texture": "astralsorcery:blocks/wood_planks"
+    "texture": "astralsorcery:blocks/wood_raw"
   }
 }
