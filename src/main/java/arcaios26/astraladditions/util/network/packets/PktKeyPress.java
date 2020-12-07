@@ -1,6 +1,6 @@
-package arcaios26.astraladditions.network.packets;
+package arcaios26.astraladditions.util.network.packets;
 
-import arcaios26.astraladditions.items.wearable.AstralRing;
+import arcaios26.astraladditions.objects.items.wearable.ItemAstralRing;
 import arcaios26.astraladditions.util.AAKeyBind;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -34,16 +34,18 @@ public class PktKeyPress implements IMessage {
     public static class Handler implements IMessageHandler<PktKeyPress, IMessage> {
         @Override
         public IMessage onMessage(final PktKeyPress message, final MessageContext ctx) {
-            ctx.getServerHandler().player.server.addScheduledTask(() -> {
-                EntityPlayerMP player = ctx.getServerHandler().player;
-
-                if (message.key == AAKeyBind.RING_TOGGLE) {
-                    if (isBaubleEquipped(player, Item.getByNameOrId("astraladditions:astral_ring")) != -1) {
-                        AstralRing.toggleRing(getBaublesHandler(player).getStackInSlot(isBaubleEquipped(player, Item.getByNameOrId("astraladditions:astral_ring"))));
-                    }
-                }
-            });
+            ctx.getServerHandler().player.server.addScheduledTask(() -> handle(message, ctx));
             return null;
+        }
+
+        private void handle(PktKeyPress message, MessageContext ctx) {
+            EntityPlayerMP player = ctx.getServerHandler().player;
+
+            if (message.key == AAKeyBind.RING_TOGGLE) {
+                if (isBaubleEquipped(player, Item.getByNameOrId("astraladditions:ring_astral")) != -1) {
+                    ItemAstralRing.toggleRing(getBaublesHandler(player).getStackInSlot(isBaubleEquipped(player, Item.getByNameOrId("astraladditions:ring_astral"))));
+                }
+            }
         }
     }
 }

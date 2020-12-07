@@ -5,7 +5,7 @@ import arcaios26.astraladditions.crafting.AstralRingRecipe;
 import static hellfirepvp.astralsorcery.common.crafting.altar.AltarRecipeRegistry.cacheLocalRecipes;
 import static hellfirepvp.astralsorcery.common.crafting.altar.AltarRecipeRegistry.registerAltarRecipe;
 
-public class ModRecipes {
+public class RecipeInit {
     public static AstralRingRecipe rAstralRing;
 
     public static void initRecipes() {

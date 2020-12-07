@@ -1,4 +1,4 @@
-package arcaios26.astraladditions.util;
+package arcaios26.astraladditions;
 
 public class Reference {
     public static final String MOD_ID = "astraladditions";

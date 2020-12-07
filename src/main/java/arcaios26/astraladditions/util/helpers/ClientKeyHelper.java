@@ -1,6 +1,6 @@
-package arcaios26.astraladditions.util;
+package arcaios26.astraladditions.util.helpers;
 
-
+import arcaios26.astraladditions.util.AAKeyBind;
 import com.google.common.collect.ImmutableBiMap;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;

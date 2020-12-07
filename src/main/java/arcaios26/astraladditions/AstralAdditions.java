@@ -1,7 +1,8 @@
 package arcaios26.astraladditions;
 
+
 import arcaios26.astraladditions.proxy.CommonProxy;
-import arcaios26.astraladditions.util.Reference;
+import arcaios26.astraladditions.util.handlers.RegistryHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,17 +18,17 @@ public class AstralAdditions {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public static void preInt(FMLPreInitializationEvent event) {
-        proxy.preInit(event);
+    public static void preInit(FMLPreInitializationEvent event) {
+        RegistryHandler.preInitRegistries(event);
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
-        proxy.init(event);
+        RegistryHandler.initRegistries(event);
     }
 
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event) {
-        proxy.postInit(event);
+        RegistryHandler.postInitRegistries(event);
     }
 }

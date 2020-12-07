@@ -1,9 +1,9 @@
 package arcaios26.astraladditions.events;
 
-import arcaios26.astraladditions.network.PacketHandler;
-import arcaios26.astraladditions.network.packets.PktKeyPress;
-import arcaios26.astraladditions.util.ClientKeyHelper;
-import arcaios26.astraladditions.util.Reference;
+import arcaios26.astraladditions.Reference;
+import arcaios26.astraladditions.util.handlers.PacketHandler;
+import arcaios26.astraladditions.util.helpers.ClientKeyHelper;
+import arcaios26.astraladditions.util.network.packets.PktKeyPress;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

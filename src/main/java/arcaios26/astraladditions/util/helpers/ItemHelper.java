@@ -1,5 +1,6 @@
-package arcaios26.astraladditions.util;
+package arcaios26.astraladditions.util.helpers;
 
+import arcaios26.astraladditions.Reference;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

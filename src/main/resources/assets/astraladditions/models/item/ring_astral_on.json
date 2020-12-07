@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "astraladditions:items/astral_ring_on"
+    "layer0": "astraladditions:items/ring_astral_on"
   }
 }

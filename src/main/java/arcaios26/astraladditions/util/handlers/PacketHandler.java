@@ -1,8 +1,9 @@
-package arcaios26.astraladditions.network;
+package arcaios26.astraladditions.util.handlers;
 
-import arcaios26.astraladditions.network.packets.PktItemEffectRender;
-import arcaios26.astraladditions.network.packets.PktKeyPress;
-import arcaios26.astraladditions.util.Reference;
+import arcaios26.astraladditions.Reference;
+import arcaios26.astraladditions.util.network.packets.PktItemEffectRender;
+import arcaios26.astraladditions.util.network.packets.PktKeyPress;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -12,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 public class PacketHandler {
     private static final SimpleNetworkWrapper HANDLER = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
 
-    public static void register() {
+    public static void init() {
         int disc = 0;
         HANDLER.registerMessage(PktKeyPress.Handler.class, PktKeyPress.class, disc++, Side.SERVER);
         HANDLER.registerMessage(PktItemEffectRender.Handler.class, PktItemEffectRender.class, disc++, Side.CLIENT);

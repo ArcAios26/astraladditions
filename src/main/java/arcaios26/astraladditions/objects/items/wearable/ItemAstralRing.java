@@ -1,10 +1,11 @@
-package arcaios26.astraladditions.items.wearable;
+package arcaios26.astraladditions.objects.items.wearable;
 
-
-import arcaios26.astraladditions.network.PacketHandler;
-import arcaios26.astraladditions.network.packets.PktItemEffectRender;
-import arcaios26.astraladditions.util.ItemHelper;
-import arcaios26.astraladditions.util.Reference;
+import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.init.ItemInit;
+import arcaios26.astraladditions.util.handlers.PacketHandler;
+import arcaios26.astraladditions.util.helpers.ItemHelper;
+import arcaios26.astraladditions.util.interfaces.IHasModel;
+import arcaios26.astraladditions.util.network.packets.PktItemEffectRender;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import hellfirepvp.astralsorcery.client.effect.EffectHelper;
@@ -13,22 +14,17 @@ import hellfirepvp.astralsorcery.common.base.FluidRarityRegistry;
 import hellfirepvp.astralsorcery.common.constellation.distribution.ConstellationSkyHandler;
 import hellfirepvp.astralsorcery.common.network.PacketChannel;
 import hellfirepvp.astralsorcery.common.network.packet.server.PktPlayLiquidSpring;
-import hellfirepvp.astralsorcery.common.util.ByteBufUtils;
 import hellfirepvp.astralsorcery.common.util.SkyCollectionHelper;
 import hellfirepvp.astralsorcery.common.util.data.Vector3;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -37,32 +33,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.awt.*;
 import java.util.Random;
 
-import static arcaios26.astraladditions.util.ItemHelper.*;
+import static arcaios26.astraladditions.util.helpers.ItemHelper.*;
 
-
-public class AstralRing extends Item implements IBauble {
-
+public class ItemAstralRing extends Item implements IHasModel, IBauble {
     private static Random rand = new Random();
 
-
-    public AstralRing() {
-        setRegistryName("astral_ring");
-        setTranslationKey(Reference.MOD_ID + ".astral_ring");
+    public ItemAstralRing(String name) {
+        setRegistryName(name);
+        setTranslationKey(name);
         setMaxStackSize(1);
         setMaxDamage(0);
         setCreativeTab(CreativeTabs.TOOLS);
         addPropertyOverride(ACTIVE_NAME, ACTIVE_GETTER);
 
+        ItemInit.ITEMS.add(this);
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    @Override
+    public void registerModels() {
+        AstralAdditions.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
         return BaubleType.RING;
+    }
+
+    public static void toggleRing(ItemStack stack) {
+        if (!ItemHelper.getOrCreateTag(stack).getBoolean(TAG_ACTIVE)) stack.getTagCompound().setBoolean(TAG_ACTIVE, true);
+        else stack.getTagCompound().setBoolean(TAG_ACTIVE, false);
     }
 
     @Override
@@ -144,11 +143,6 @@ public class AstralRing extends Item implements IBauble {
 
             pos.release();
         }
-    }
-
-    public static void toggleRing(ItemStack stack) {
-        if (!ItemHelper.getOrCreateTag(stack).getBoolean(TAG_ACTIVE)) stack.getTagCompound().setBoolean(TAG_ACTIVE, true);
-        else stack.getTagCompound().setBoolean(TAG_ACTIVE, false);
     }
 
     @Override
