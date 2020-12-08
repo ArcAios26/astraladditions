@@ -1,6 +1,6 @@
 package arcaios26.astraladditions.util.network.packets;
 
-import arcaios26.astraladditions.objects.items.wearable.ItemAstralRing;
+import arcaios26.astraladditions.objects.baubles.ItemAstralRing;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;

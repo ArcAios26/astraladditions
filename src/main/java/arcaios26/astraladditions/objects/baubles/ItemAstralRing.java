@@ -1,4 +1,4 @@
-package arcaios26.astraladditions.objects.items.wearable;
+package arcaios26.astraladditions.objects.baubles;
 
 import arcaios26.astraladditions.AstralAdditions;
 import arcaios26.astraladditions.init.ItemInit;
