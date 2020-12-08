@@ -1,5 +1,6 @@
 package arcaios26.astraladditions.crafting;
 
+import arcaios26.astraladditions.init.ItemInit;
 import hellfirepvp.astralsorcery.common.crafting.altar.recipes.TraitRecipe;
 import hellfirepvp.astralsorcery.common.crafting.helper.ShapeMap;
 import hellfirepvp.astralsorcery.common.crafting.helper.ShapedRecipe;

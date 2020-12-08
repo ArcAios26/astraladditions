@@ -8,11 +8,13 @@ import arcaios26.astraladditions.init.ResearchInit;
 import arcaios26.astraladditions.objects.blocks.BlockMarbleWall;
 import arcaios26.astraladditions.util.helpers.ClientKeyHelper;
 import arcaios26.astraladditions.util.interfaces.IHasModel;
+import hellfirepvp.astralsorcery.common.crafting.helper.AccessibleRecipeAdapater;
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -51,13 +53,18 @@ public class RegistryHandler {
         }
     }
 
+    @SubscribeEvent
+    public static void onRecipeRegister(RegistryEvent.Register<IRecipe> event) {
+        RecipeInit.initRecipes();
+    }
+
+
     public static void preInitRegistries(FMLPreInitializationEvent event) {
         PacketHandler.init();
     }
 
     public static void initRegistries(FMLInitializationEvent event) {
         ClientKeyHelper.registerBindings();
-        RecipeInit.initRecipes();
         ResearchInit.init();
     }
 
