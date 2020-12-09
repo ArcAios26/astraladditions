@@ -1,6 +1,7 @@
 {
-  "parent": "block/wall_side",
+  "parent": "astraladditions:block/custom_wall_side",
   "textures": {
-    "wall": "astralsorcery:blocks/marble_arch"
+    "side": "astralsorcery:blocks/marble_arch",
+    "top": "astralsorcery:blocks/marble_raw"
   }
 }

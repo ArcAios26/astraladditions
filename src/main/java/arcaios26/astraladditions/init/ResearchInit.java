@@ -13,6 +13,7 @@ public class ResearchInit {
     }
 
     private static void initRadiance() {
+        ResearchProgression.Registry regDiscovery = ResearchProgression.DISCOVERY.getRegistry();
         ResearchProgression.Registry regRadiance = ResearchProgression.RADIANCE.getRegistry();
 
         ResearchNode resAstralRing = new ResearchNode(new ItemStack(Item.getByNameOrId("astraladditions:ring_astral")), "astraladditions.ring_astral", 8, 2);
