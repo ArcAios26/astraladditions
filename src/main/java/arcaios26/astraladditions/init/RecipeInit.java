@@ -8,6 +8,7 @@ import hellfirepvp.astralsorcery.common.crafting.altar.recipes.DiscoveryRecipe;
 import hellfirepvp.astralsorcery.common.crafting.helper.AccessibleRecipeAdapater;
 import hellfirepvp.astralsorcery.common.crafting.helper.ShapedRecipeSlot;
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
+import hellfirepvp.astralsorcery.common.util.OreDictAlias;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,6 +32,10 @@ public class RecipeInit {
     public static AccessibleRecipeAdapater rBlackMarbleWallRuned;
     public static AccessibleRecipeAdapater rInfusedWoodFence;
     public static AccessibleRecipeAdapater rInfusedWoodFenceGate;
+    public static AccessibleRecipeAdapater rStarmetalHelmet;
+    public static AccessibleRecipeAdapater rStarmetalChestplate;
+    public static AccessibleRecipeAdapater rStarmetalLeggings;
+    public static AccessibleRecipeAdapater rStarmetalBoots;
 
     public static void initRecipes() {
         initVanilla();
@@ -55,6 +60,10 @@ public class RecipeInit {
         registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallRuned));
         registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFence));
         registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFenceGate));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalHelmet));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalChestplate));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalLeggings));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalBoots));
     }
 
     private static void initTrait() {
@@ -146,6 +155,32 @@ public class RecipeInit {
                 .addPart(BlockInfusedWood.WoodType.PLANKS.asStack(),
                         ShapedRecipeSlot.CENTER, ShapedRecipeSlot.LOWER_CENTER)
                 .addPart(Item.getByNameOrId("minecraft:stick"),
+                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
+                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        rStarmetalHelmet = newShapedRecipe("helmet_starmetal", Item.getByNameOrId("astraladditions:helmet_starmetal"))
+                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
+                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        rStarmetalChestplate = newShapedRecipe("chestplate_starmetal", Item.getByNameOrId("astraladditions:chestplate_starmetal"))
+                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                        ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_RIGHT,
+                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
+                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        rStarmetalLeggings = newShapedRecipe("leggings_starmetal", Item.getByNameOrId("astraladditions:leggings_starmetal"))
+                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                        ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_CENTER, ShapedRecipeSlot.UPPER_RIGHT,
+                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
+                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        rStarmetalBoots = newShapedRecipe("boots_starmetal", Item.getByNameOrId("astraladditions:boots_starmetal"))
+                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
