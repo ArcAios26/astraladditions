@@ -1,12 +1,15 @@
 package arcaios26.astraladditions.init;
 
+import arcaios26.astraladditions.objects.blocks.BlockBase;
 import arcaios26.astraladditions.objects.blocks.BlockIWFence;
 import arcaios26.astraladditions.objects.blocks.BlockIWFenceGate;
 import arcaios26.astraladditions.objects.blocks.BlockMarbleWall;
 import hellfirepvp.astralsorcery.common.block.BlockBlackMarble;
 import hellfirepvp.astralsorcery.common.block.BlockMarble;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +31,5 @@ public class BlockInit {
     public static final BlockMarbleWall BLOCK_BLACK_MARBLE_CHISELED_WALL = new BlockMarbleWall("block_black_marble_chiseled_wall", new BlockBlackMarble(), CreativeTabs.DECORATIONS);
     public static final BlockMarbleWall BLOCK_BLACK_MARBLE_ENGRAVED_WALL = new BlockMarbleWall("block_black_marble_engraved_wall", new BlockBlackMarble(), CreativeTabs.DECORATIONS);
     public static final BlockMarbleWall BLOCK_BLACK_MARBLE_RUNED_WALL = new BlockMarbleWall("block_black_marble_runed_wall", new BlockBlackMarble(), CreativeTabs.DECORATIONS);
+    public static final BlockBase BLOCK_STARMETAL = new BlockBase("block_starmetal", Material.IRON, CreativeTabs.DECORATIONS);
 }

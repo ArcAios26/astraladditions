@@ -64,6 +64,7 @@ public class RegistryHandler {
     }
 
     public static void initRegistries(FMLInitializationEvent event) {
+        
         ClientKeyHelper.registerBindings();
         ResearchInit.init();
     }

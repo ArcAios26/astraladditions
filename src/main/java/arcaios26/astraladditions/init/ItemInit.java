@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemInit {
     public static final List<Item> ITEMS = new ArrayList<Item>();
     //Material
-    public static final ItemArmor.ArmorMaterial ARMOR_STARMETAL = EnumHelper.addArmorMaterial("armor_starmetal", Reference.MOD_ID + ":starmetal", 13, new int[]{2, 5, 5, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+    public static final ItemArmor.ArmorMaterial ARMOR_STARMETAL = EnumHelper.addArmorMaterial("armor_starmetal", Reference.MOD_ID + ":starmetal", 13, new int[]{2, 5, 6, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F);
 
     //Baubles
     public static final Item RING_ASTRAL = new ItemAstralRing("ring_astral", CreativeTabs.TOOLS);

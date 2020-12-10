@@ -24,3 +24,5 @@ astraladditions.key.ring_toggle=Toggle Ring
 # Research Data
 research.astraladditions.ring_astral.name=Astral Ring
 journal.astraladditions.ring_astral.text=After some experimenting with the Ichosic Resonator it would appear a ring can be crafted and keyed to the resonance of both Fluid traits and Starlight concentrations. Absolutely amazing!
+resarch.astraladditions.armor_starmetal=Starmetal Armor
+journal.astraladditions.armor_starmetal.text=Crafting armor from Starmetal has produced a set of armor comparable to Iron with a few exceptions of note. The Celestial properties of starmetal make it a bit more receptive to enchantment and seem to add a small amount of toughness.
