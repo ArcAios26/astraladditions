@@ -6,7 +6,9 @@ import hellfirepvp.astralsorcery.common.block.BlockInfusedWood;
 import hellfirepvp.astralsorcery.common.block.BlockMarble;
 import hellfirepvp.astralsorcery.common.crafting.altar.recipes.DiscoveryRecipe;
 import hellfirepvp.astralsorcery.common.crafting.helper.AccessibleRecipeAdapater;
+import hellfirepvp.astralsorcery.common.crafting.helper.ShapedRecipe;
 import hellfirepvp.astralsorcery.common.crafting.helper.ShapedRecipeSlot;
+import hellfirepvp.astralsorcery.common.item.ItemCraftingComponent;
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
 import hellfirepvp.astralsorcery.common.util.OreDictAlias;
 import net.minecraft.block.Block;
@@ -36,6 +38,8 @@ public class RecipeInit {
     public static AccessibleRecipeAdapater rStarmetalChestplate;
     public static AccessibleRecipeAdapater rStarmetalLeggings;
     public static AccessibleRecipeAdapater rStarmetalBoots;
+    public static AccessibleRecipeAdapater rStarmetalBlock;
+    public static AccessibleRecipeAdapater rStarmetalIngot;
 
     public static void initRecipes() {
         initVanilla();
@@ -46,24 +50,26 @@ public class RecipeInit {
     }
 
     private static void initDiscovery() {
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWall));
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallBrick));
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallArch));
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallChiseled));
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallEngraved));
-        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallRuned));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWall));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallBrick));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallArch));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallChiseled));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallEngraved));
-        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallRuned));
-        registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFence));
-        registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFenceGate));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalHelmet));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalChestplate));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalLeggings));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalBoots));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWall).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallBrick).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallArch).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallChiseled).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallEngraved).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rMarbleWallRuned).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWall).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallBrick).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallArch).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallChiseled).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallEngraved).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallRuned).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFence).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFenceGate).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalHelmet).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalChestplate).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalLeggings).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalBoots).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalBlock).setPassiveStarlightRequirement(0));
+        registerAltarRecipe(new DiscoveryRecipe(rStarmetalIngot).setPassiveStarlightRequirement(0));
     }
 
     private static void initTrait() {
@@ -71,79 +77,79 @@ public class RecipeInit {
     }
 
     private static void initVanilla() {
-        rMarbleWall = newShapedRecipe("block_marble_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_wall")), 6))
+        rMarbleWall = newShapedRecipe("block_marble_wall", BlockInit.BLOCK_MARBLE_WALL)
                 .addPart(BlockMarble.MarbleBlockType.RAW.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rMarbleWallBrick = newShapedRecipe("block_marble_brick_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_brick_wall")), 6))
+        rMarbleWallBrick = newShapedRecipe("block_marble_brick_wall", BlockInit.BLOCK_MARBLE_BRICK_WALL)
                 .addPart(BlockMarble.MarbleBlockType.BRICKS.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rMarbleWallArch = newShapedRecipe("block_marble_arch_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_arch_wall")), 6))
+        rMarbleWallArch = newShapedRecipe("block_marble_arch_wall", BlockInit.BLOCK_MARBLE_ARCH_WALL)
                 .addPart(BlockMarble.MarbleBlockType.ARCH.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rMarbleWallChiseled = newShapedRecipe("block_marble_chiseled_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_chiseled_wall")), 6))
+        rMarbleWallChiseled = newShapedRecipe("block_marble_chiseled_wall", BlockInit.BLOCK_MARBLE_CHISELED_WALL)
                 .addPart(BlockMarble.MarbleBlockType.CHISELED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rMarbleWallEngraved = newShapedRecipe("block_marble_engraved_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_engraved_wall")), 6))
+        rMarbleWallEngraved = newShapedRecipe("block_marble_engraved_wall", BlockInit.BLOCK_MARBLE_ENGRAVED_WALL)
                 .addPart(BlockMarble.MarbleBlockType.ENGRAVED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rMarbleWallRuned = newShapedRecipe("block_marble_runed_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_marble_runed_wall")), 6))
+        rMarbleWallRuned = newShapedRecipe("block_marble_runed_wall", BlockInit.BLOCK_MARBLE_RUNED_WALL)
                 .addPart(BlockMarble.MarbleBlockType.RUNED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWall = newShapedRecipe("block_black_marble_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_wall")), 6))
+        rBlackMarbleWall = newShapedRecipe("block_black_marble_wall", BlockInit.BLOCK_BLACK_MARBLE_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.RAW.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWallBrick = newShapedRecipe("block_black_marble_brick_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_brick_wall")), 6))
+        rBlackMarbleWallBrick = newShapedRecipe("block_black_marble_brick_wall", BlockInit.BLOCK_BLACK_MARBLE_BRICK_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.BRICKS.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWallArch = newShapedRecipe("block_black_marble_arch_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_arch_wall")), 6))
+        rBlackMarbleWallArch = newShapedRecipe("block_black_marble_arch_wall", BlockInit.BLOCK_BLACK_MARBLE_ARCH_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.ARCH.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWallChiseled = newShapedRecipe("block_black_marble_chiseled_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_chiseled_wall")), 6))
+        rBlackMarbleWallChiseled = newShapedRecipe("block_black_marble_chiseled_wall", BlockInit.BLOCK_BLACK_MARBLE_CHISELED_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.CHISELED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWallEngraved = newShapedRecipe("block_black_marble_engraved_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_engraved_wall")), 6))
+        rBlackMarbleWallEngraved = newShapedRecipe("block_black_marble_engraved_wall", BlockInit.BLOCK_BLACK_MARBLE_ENGRAVED_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.ENGRAVED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rBlackMarbleWallRuned = newShapedRecipe("block_black_marble_runed_wall", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_black_marble_runed_wall")), 6))
+        rBlackMarbleWallRuned = newShapedRecipe("block_black_marble_runed_wall", BlockInit.BLOCK_BLACK_MARBLE_RUNED_WALL)
                 .addPart(BlockBlackMarble.BlackMarbleBlockType.RUNED.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rInfusedWoodFence = newShapedRecipe("block_infused_wood_fence", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_infused_wood_fence")), 3))
+        rInfusedWoodFence = newShapedRecipe("block_infused_wood_fence", BlockInit.BLOCK_IW_FENCE)
                 .addPart(BlockInfusedWood.WoodType.PLANKS.asStack(),
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
@@ -151,7 +157,7 @@ public class RecipeInit {
                         ShapedRecipeSlot.CENTER, ShapedRecipeSlot.LOWER_CENTER)
                 .buildAndRegisterShapedRecipe();
 
-        rInfusedWoodFenceGate = newShapedRecipe("block_infused_wood_fence_gate", new ItemStack(Item.getItemFromBlock(Block.getBlockFromName("astraladditions:block_infused_wood_fence_gate"))))
+        rInfusedWoodFenceGate = newShapedRecipe("block_infused_wood_fence_gate", BlockInit.BLOCK_IW_FENCE_GATE)
                 .addPart(BlockInfusedWood.WoodType.PLANKS.asStack(),
                         ShapedRecipeSlot.CENTER, ShapedRecipeSlot.LOWER_CENTER)
                 .addPart(Item.getByNameOrId("minecraft:stick"),
@@ -183,6 +189,20 @@ public class RecipeInit {
                 .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
                         ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        rStarmetalBlock = newShapedRecipe("block_starmetal", BlockInit.BLOCK_STARMETAL)
+                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                        ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_CENTER, ShapedRecipeSlot.UPPER_RIGHT,
+                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
+                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
+                .buildAndRegisterShapedRecipe();
+
+        ItemStack ingot = ItemCraftingComponent.MetaType.STARMETAL_INGOT.asStack();
+        ingot.setCount(9);
+        rStarmetalIngot = newShapedRecipe("ingot_starmetal", ingot)
+                .addPart(BlockInit.BLOCK_STARMETAL, ShapedRecipeSlot.CENTER)
+                .forceEmptySpaces()
                 .buildAndRegisterShapedRecipe();
     }
 }

@@ -9,6 +9,8 @@ import hellfirepvp.astralsorcery.common.data.research.ResearchProgression;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import java.util.Objects;
+
 public class ResearchInit {
     public static void init() {
         initDiscovery();
@@ -29,7 +31,7 @@ public class ResearchInit {
     private static void initAttunement() {
         ResearchProgression.Registry regAttunement = ResearchProgression.ATTUNEMENT.getRegistry();
 
-        ResearchNode resStarmetalArmor = new ResearchNode(new ItemStack(Item.getByNameOrId("astraladditions:chestplate_starmetal")), "astraladditions.armor_starmetal", 6, 6);
+        ResearchNode resStarmetalArmor = new ResearchNode(new ItemStack(Objects.requireNonNull(Item.getByNameOrId("astraladditions:chestplate_starmetal"))), "astraladditions.armor_starmetal", 6, 6);
         resStarmetalArmor.addPage(new JournalPageText("journal.astraladditions.armor_starmetal.text"));
         resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalHelmet));
         resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalChestplate));
@@ -38,7 +40,12 @@ public class ResearchInit {
 
         regAttunement.register(resStarmetalArmor);
 
-        resStarmetalArmor.addSourceConnectionFrom(ResearchProgression.findNode("STARMETAL_RES"));
+        ResearchNode resTempNode = ResearchProgression.findNode("STARMETAL_RES");
+        if (resTempNode != null) {
+            resStarmetalArmor.addSourceConnectionFrom(resTempNode);
+            resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBlock));
+            resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalIngot));
+        }
     }
 
     private static void initDiscovery() {
