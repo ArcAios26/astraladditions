@@ -1,10 +1,8 @@
 package arcaios26.astraladditions.util.handlers;
 
 import arcaios26.astraladditions.AstralAdditions;
-import arcaios26.astraladditions.init.BlockInit;
-import arcaios26.astraladditions.init.RecipeInit;
-import arcaios26.astraladditions.init.ItemInit;
-import arcaios26.astraladditions.init.ResearchInit;
+import arcaios26.astraladditions.creativetabs.AATab;
+import arcaios26.astraladditions.init.*;
 import arcaios26.astraladditions.objects.blocks.BlockMarbleWall;
 import arcaios26.astraladditions.util.helpers.ClientKeyHelper;
 import arcaios26.astraladditions.util.interfaces.IHasModel;
@@ -12,6 +10,7 @@ import hellfirepvp.astralsorcery.common.crafting.helper.AccessibleRecipeAdapater
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
@@ -28,6 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
 public class RegistryHandler {
+
     @SubscribeEvent
     public static void onItemRegister(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));

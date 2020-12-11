@@ -1,5 +1,12 @@
+# Tabs
+itemGroup.astraladditions=Astral Additions
+
 # Items
 item.ring_astral.name=Astral Ring
+item.helmet_starmetal.name=Starmetal Helmet
+item.chestplate_starmetal.name=Starmetal Chestplate
+item.leggings_starmetal.name=Starmetal Leggings
+item.boots_starmetal.name=Starmetal Boots
 
 #Blocks
 tile.block_infused_wood_fence.name=Infused Wood Fence
@@ -16,6 +23,7 @@ tile.block_black_marble_arch_wall.name=Sooty Marble Arch Wall
 tile.block_black_marble_chiseled_wall.name=Sooty Chiseled Marble Wall
 tile.block_black_marble_engraved_wall.name=Sooty Engraved Marble Wall
 tile.block_black_marble_runed_wall.name=Sooty Runed Marble Wall
+tile.block_starmetal.name=Block of Starmetal
 
 # Keybinds
 key.categories.astraladditions=Astral Additions
