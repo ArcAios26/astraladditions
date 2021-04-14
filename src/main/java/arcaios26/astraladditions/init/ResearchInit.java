@@ -1,5 +1,6 @@
 package arcaios26.astraladditions.init;
 
+import arcaios26.astraladditions.Config;
 import hellfirepvp.astralsorcery.client.gui.journal.page.JournalPageDiscoveryRecipe;
 import hellfirepvp.astralsorcery.client.gui.journal.page.JournalPageRecipe;
 import hellfirepvp.astralsorcery.client.gui.journal.page.JournalPageText;
@@ -20,31 +21,39 @@ public class ResearchInit {
 
     private static void initRadiance() {
         ResearchProgression.Registry regRadiance = ResearchProgression.RADIANCE.getRegistry();
+        if (Config.ringEnabled) {
+            ResearchNode resAstralRing = new ResearchNode(new ItemStack(Item.getByNameOrId("astraladditions:ring_astral")), "astraladditions.ring_astral", 8, 2);
+            resAstralRing.addPage(new JournalPageText("journal.astraladditions.ring_astral.text"));
+            resAstralRing.addPage(new JournalPageTraitRecipe(RecipeInit.rAstralRing));
 
-        ResearchNode resAstralRing = new ResearchNode(new ItemStack(Item.getByNameOrId("astraladditions:ring_astral")), "astraladditions.ring_astral", 8, 2);
-        resAstralRing.addPage(new JournalPageText("journal.astraladditions.ring_astral.text"));
-        resAstralRing.addPage(new JournalPageTraitRecipe(RecipeInit.rAstralRing));
-
-        regRadiance.register(resAstralRing);
+            regRadiance.register(resAstralRing);
+        }
     }
 
     private static void initAttunement() {
         ResearchProgression.Registry regAttunement = ResearchProgression.ATTUNEMENT.getRegistry();
+        if (Config.armorEnabled) {
+            ResearchNode resStarmetalArmor = new ResearchNode(new ItemStack(Objects.requireNonNull(Item.getByNameOrId("astraladditions:chestplate_starmetal"))), "astraladditions.armor_starmetal", 6, 6);
+            resStarmetalArmor.addPage(new JournalPageText("journal.astraladditions.armor_starmetal.text"));
+            resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalHelmet));
+            resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalChestplate));
+            resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalLeggings));
+            resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBoots));
 
-        ResearchNode resStarmetalArmor = new ResearchNode(new ItemStack(Objects.requireNonNull(Item.getByNameOrId("astraladditions:chestplate_starmetal"))), "astraladditions.armor_starmetal", 6, 6);
-        resStarmetalArmor.addPage(new JournalPageText("journal.astraladditions.armor_starmetal.text"));
-        resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalHelmet));
-        resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalChestplate));
-        resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalLeggings));
-        resStarmetalArmor.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBoots));
+            regAttunement.register(resStarmetalArmor);
 
-        regAttunement.register(resStarmetalArmor);
-
-        ResearchNode resTempNode = ResearchProgression.findNode("STARMETAL_RES");
-        if (resTempNode != null) {
-            resStarmetalArmor.addSourceConnectionFrom(resTempNode);
-            resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBlock));
-            resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalIngot));
+            ResearchNode resTempNode = ResearchProgression.findNode("STARMETAL_RES");
+            if (resTempNode != null) {
+                resStarmetalArmor.addSourceConnectionFrom(resTempNode);
+                resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBlock));
+                resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalIngot));
+            }
+        } else {
+            ResearchNode resTempNode = ResearchProgression.findNode("STARMETAL_RES");
+            if (resTempNode != null) {
+                resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalBlock));
+                resTempNode.addPage(new JournalPageRecipe(RecipeInit.rStarmetalIngot));
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package arcaios26.astraladditions.objects.armor;
 
 import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.Config;
 import arcaios26.astraladditions.init.ItemInit;
 import arcaios26.astraladditions.util.interfaces.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +15,7 @@ public class ArmorBase extends ItemArmor implements IHasModel {
         setTranslationKey(name);
         setCreativeTab(tab);
 
-        ItemInit.ITEMS.add(this);
+        if (Config.armorEnabled) ItemInit.ITEMS.add(this);
     }
 
     @Override

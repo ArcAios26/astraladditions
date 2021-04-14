@@ -1,9 +1,11 @@
 package arcaios26.astraladditions.init;
 
 import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.Config;
 import arcaios26.astraladditions.Reference;
 import arcaios26.astraladditions.objects.armor.ArmorBase;
 import arcaios26.astraladditions.objects.baubles.ItemAstralRing;
+import arcaios26.astraladditions.util.handlers.RegistryHandler;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;

@@ -1,6 +1,7 @@
 package arcaios26.astraladditions.objects.baubles;
 
 import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.Config;
 import arcaios26.astraladditions.init.ItemInit;
 import arcaios26.astraladditions.util.handlers.PacketHandler;
 import arcaios26.astraladditions.util.helpers.ItemHelper;
@@ -46,7 +47,7 @@ public class ItemAstralRing extends Item implements IHasModel, IBauble {
         setCreativeTab(tab);
         addPropertyOverride(ACTIVE_NAME, ACTIVE_GETTER);
 
-        ItemInit.ITEMS.add(this);
+        if (Config.ringEnabled) ItemInit.ITEMS.add(this);
     }
 
     @Override
