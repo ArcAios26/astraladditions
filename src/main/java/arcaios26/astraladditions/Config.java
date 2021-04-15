@@ -1,8 +1,10 @@
 package arcaios26.astraladditions;
 
+
 import arcaios26.astraladditions.util.handlers.RegistryHandler;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
+
 
 public class Config {
     private static final String CATEGORY_GENERAL = "general";
