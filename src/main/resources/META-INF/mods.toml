@@ -1,0 +1,44 @@
+modLoader="javafml" #mandatory
+loaderVersion="[35,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+issueTrackerURL="https://github.com/ArcAios26/astraladditions/issues" #optional
+[[mods]] #mandatory
+modId="astraladditions" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Astral Additions" #mandatory
+displayURL="https://www.curseforge.com/minecraft/mc-mods/astral-additions"
+logoFile="examplemod.png" #optional
+authors="ArcAios26" #optional
+description='''
+An addon for Astral Sorcery aimed at adding in decorative blocks and content expansion
+'''
+[[dependencies.astraladditions]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[35,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.astraladditions]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.astraladditions]]
+    modId="observerlib"
+    mandatory=true
+    versionRange="[1.16.4-1.5,]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.astraladditions]]
+    modId="curios"
+    mandatory=true
+    versionRange="[FORGE-1.16.3-,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.astraladditions]]
+    modId="astralsorcery"
+    mandatory=true
+    versionRange="[1.16.4-1.13,)"
+    ordering="NONE"
+    side="BOTH"

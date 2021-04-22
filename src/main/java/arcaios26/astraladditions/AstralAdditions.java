@@ -1,39 +1,57 @@
 package arcaios26.astraladditions;
 
-
-import arcaios26.astraladditions.creativetabs.AATab;
-import arcaios26.astraladditions.proxy.CommonProxy;
-import arcaios26.astraladditions.util.handlers.RegistryHandler;
-import net.minecraft.creativetab.CreativeTabs;
+import arcaios26.astraladditions.client.ClientProxy;
+import arcaios26.astraladditions.common.CommonProxy;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DatagenModLoader;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, dependencies = Reference.DEPENDENCIES, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
+@Mod(AstralAdditions.MODID)
 public class AstralAdditions {
-    @Mod.Instance
-    public static AstralAdditions instance;
 
-    public static Logger log = LogManager.getLogger(Reference.NAME);
+    public static final String MODID = "astraladditions";
+    public static final String NAME = "Astral Additions";
 
-    @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.COMMON_PROXY_CLASS)
-    public static CommonProxy proxy;
+    public static Logger log = LogManager.getLogger(NAME);
 
-    //Tabs
-    public static final CreativeTabs AATAB = new AATab(Reference.MOD_ID);
+    private static AstralAdditions instance;
+    private static ModContainer modContainer;
+    private final CommonProxy proxy;
 
-    @Mod.EventHandler
-    public static void preInit(FMLPreInitializationEvent event) { RegistryHandler.preInitRegistries(event); }
+    public AstralAdditions() {
+        instance = this;
+        modContainer = ModList.get().getModContainerById(MODID).get();
 
-    @Mod.EventHandler
-    public static void init(FMLInitializationEvent event) {
-        RegistryHandler.initRegistries(event);
+        this.proxy = DistExecutor.unsafeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+        this.proxy.initialize();
+        this.proxy.attachLifecycle(FMLJavaModLoadingContext.get().getModEventBus());
+        this.proxy.attachEventHandlers(MinecraftForge.EVENT_BUS);
     }
 
-    @Mod.EventHandler
-    public static void postInit(FMLPostInitializationEvent event) { RegistryHandler.postInitRegistries(event); }
+    public static AstralAdditions getInstance() {
+        return instance;
+    }
+
+    public static ModContainer getModContainer() {
+        return modContainer;
+    }
+
+    public static CommonProxy getProxy() {
+        return getInstance().proxy;
+    }
+
+    public static ResourceLocation key(String path) {
+        return new ResourceLocation(AstralAdditions.MODID, path);
+    }
+
+    public static boolean isDoingDataGeneration() {
+        return DatagenModLoader.isRunningDataGen();
+    }
 }
