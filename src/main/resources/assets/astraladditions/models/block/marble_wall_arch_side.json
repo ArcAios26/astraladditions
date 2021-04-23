@@ -1,0 +1,7 @@
+{
+  "parent": "astraladditions:block/custom_wall_side",
+  "textures": {
+    "side": "astralsorcery:block/marble_arch",
+    "top": "astralsorcery:block/marble_raw"
+  }
+}

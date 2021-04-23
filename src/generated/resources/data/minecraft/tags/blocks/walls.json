@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "astraladditions:marble_wall",
+    "astraladditions:marble_wall_bricks",
+    "astraladditions:marble_wall_runed",
+    "astraladditions:marble_wall_engraved",
+    "astraladditions:marble_wall_chiseled",
+    "astraladditions:marble_wall_arch",
+    "astraladditions:black_marble_wall",
+    "astraladditions:black_marble_wall_bricks",
+    "astraladditions:black_marble_wall_runed",
+    "astraladditions:black_marble_wall_engraved",
+    "astraladditions:black_marble_wall_chiseled",
+    "astraladditions:black_marble_wall_arch"
+  ]
+}

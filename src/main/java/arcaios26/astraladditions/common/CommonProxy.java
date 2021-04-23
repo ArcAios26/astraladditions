@@ -1,23 +1,40 @@
 package arcaios26.astraladditions.common;
 
+import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.common.registry.internal.InternalRegistryPrimer;
+import arcaios26.astraladditions.common.registry.internal.PrimerEventHandler;
 import hellfirepvp.astralsorcery.common.base.Mods;
 import hellfirepvp.astralsorcery.common.integration.IntegrationCurios;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 
+import static arcaios26.astraladditions.common.lib.BlocksAA.MARBLE_WALL;
+
 public class CommonProxy {
 
+    public static final ItemGroup ITEM_GROUP_AA = new ItemGroup(AstralAdditions.MODID) {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(MARBLE_WALL.getBlock());
+        }
+    };
+
+    private InternalRegistryPrimer registryPrimer;
+    private PrimerEventHandler registryEventHandler;
 
     public void initialize() {
-
+        this.registryPrimer = new InternalRegistryPrimer();
+        this.registryEventHandler = new PrimerEventHandler(this.registryPrimer);
     }
 
     public void attachLifecycle(IEventBus modEventBus) {
         modEventBus.addListener(this::onCommonSetup);
         modEventBus.addListener(this::onEnqueueIMC);
 
-
+        registryEventHandler.attachEventHandlers(modEventBus);
     }
 
     public void attachEventHandlers(IEventBus eventBus) {
@@ -30,5 +47,9 @@ public class CommonProxy {
 
     private void onEnqueueIMC(InterModEnqueueEvent event) {
         Mods.CURIOS.executeIfPresent(() -> IntegrationCurios::initIMC);
+    }
+
+    public InternalRegistryPrimer getRegistryPrimer() {
+        return registryPrimer;
     }
 }
