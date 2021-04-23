@@ -1,8 +1,10 @@
 package arcaios26.astraladditions.common.registry;
 
 import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.common.block.base.template.FenceGateTemplateBlock;
 import arcaios26.astraladditions.common.block.base.template.IBlockItemAA;
-import arcaios26.astraladditions.common.block.base.template.MarbleWallTemplateBlock;
+import arcaios26.astraladditions.common.block.base.template.FenceTemplateBlock;
+import arcaios26.astraladditions.common.block.base.template.WallTemplateBlock;
 import arcaios26.astraladditions.common.util.NameUtils;
 import hellfirepvp.astralsorcery.common.lib.BlocksAS;
 import net.minecraft.block.Block;
@@ -34,12 +36,30 @@ public class BlocksRegistry {
         BLACK_MARBLE_WALL_ENGRAVED = makeWall(BlocksAS.BLACK_MARBLE_ENGRAVED.getDefaultState(), "black_marble_wall_engraved");
         BLACK_MARBLE_WALL_BRICKS = makeWall(BlocksAS.BLACK_MARBLE_BRICKS.getDefaultState(), "black_marble_wall_bricks");
         BLACK_MARBLE_WALL_ARCH = makeWall(BlocksAS.BLACK_MARBLE_ARCH.getDefaultState(), "black_marble_wall_arch");
+
+        INFUSED_WOOD_FENCE = makeFence(BlocksAS.INFUSED_WOOD.getDefaultState(), "infused_wood_fence");
+        VIBRANT_INFUSED_WOOD_FENCE = makeFence(BlocksAS.INFUSED_WOOD_ENRICHED.getDefaultState(), "vibrant_infused_wood_fence");
+
+        INFUSED_WOOD_FENCE_GATE = makeFenceGate(BlocksAS.INFUSED_WOOD.getDefaultState(), "infused_wood_fence_gate");
+        VIBRANT_INFUSED_WOOD_FENCE_GATE = makeFenceGate(BlocksAS.INFUSED_WOOD_ENRICHED.getDefaultState(), "vibrant_infused_wood_fence_gate");
     }
 
-    private static MarbleWallTemplateBlock makeWall(BlockState base, String name) {
-        MarbleWallTemplateBlock wall = new MarbleWallTemplateBlock(base, Block.Properties.from(base.getBlock()));
+    private static WallTemplateBlock makeWall(BlockState base, String name) {
+        WallTemplateBlock wall = new WallTemplateBlock(base, Block.Properties.from(base.getBlock()));
         ResourceLocation wallName = new ResourceLocation(AstralAdditions.MODID, name);
         return registerBlock(wall, wallName);
+    }
+
+    private static FenceTemplateBlock makeFence(BlockState base, String name) {
+        FenceTemplateBlock fence = new FenceTemplateBlock(base, Block.Properties.from(base.getBlock()));
+        ResourceLocation fenceName = new ResourceLocation(AstralAdditions.MODID, name);
+        return registerBlock(fence, fenceName);
+    }
+
+    private static FenceGateTemplateBlock makeFenceGate(BlockState base, String name) {
+        FenceGateTemplateBlock fenceGate = new FenceGateTemplateBlock(base, Block.Properties.from(base.getBlock()));
+        ResourceLocation fenceGateName = new ResourceLocation(AstralAdditions.MODID, name);
+        return registerBlock(fenceGate, fenceGateName);
     }
 
     private static <T extends Block> T registerBlock(T block) {

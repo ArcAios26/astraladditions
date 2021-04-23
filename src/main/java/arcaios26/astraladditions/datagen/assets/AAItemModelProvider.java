@@ -29,11 +29,11 @@ public class AAItemModelProvider extends ItemModelProvider {
         wallInventory("black_marble_wall_engraved", new ResourceLocation(AstralSorcery.MODID, "block/black_marble_engraved"));
         wallInventory("black_marble_wall_arch", new ResourceLocation(AstralSorcery.MODID, "block/black_marble_arch"));
 
-        //fenceInventory("infused_wood_fence", new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
-        //fenceInventory("enriched_infused_wood_fence", new ResourceLocation(AstralSorcery.MODID, "block/wood_enriched"));
+        fenceInventory("infused_wood_fence", new ResourceLocation(AstralSorcery.MODID, "block/wood_raw"));
+        fenceInventory("vibrant_infused_wood_fence", new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
 
-        //fenceGate("infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
-        //fenceGate("enriched_infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_enriched"));
+        fenceGate("infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_raw"));
+        fenceGate("vibrant_infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
     }
     
 }

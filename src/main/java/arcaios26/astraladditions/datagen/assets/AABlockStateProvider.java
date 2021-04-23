@@ -31,10 +31,10 @@ public class AABlockStateProvider extends BlockStateProvider {
         wallBlock(BlocksAA.BLACK_MARBLE_WALL_ARCH, new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_arch_post")), new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_arch_side")), new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_arch_side_tall")));
         wallBlock(BlocksAA.BLACK_MARBLE_WALL_RUNED, new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_runed_post")), new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_runed_side")), new ModelFile.UncheckedModelFile(new ResourceLocation(MODID, "block/black_marble_wall_runed_side_tall")));
 
-        //fenceBlock(BlocksAA.INFUSED_WOOD_FENCE, new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
-        //fenceBlock(BlocksAA.ENRICHED_INFUSED_WOOD_FENCE, new ResourceLocation(AstralSorcery.MODID, "block/wood_enriched"));
+        fenceBlock(BlocksAA.INFUSED_WOOD_FENCE, new ResourceLocation(AstralSorcery.MODID, "block/wood_raw"));
+        fenceBlock(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE, new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
 
-        //fenceGateBlock(BlocksAA.INFUSED_WOOD_FENCE_GATE, new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
-        //fenceGateBlock(BlocksAA.ENRICHED_INFUSED_WOOD_FENCE_GATE, new ResourceLocation(AstralSorcery.MODID, "block/wood_enriched"));
+        fenceGateBlock(BlocksAA.INFUSED_WOOD_FENCE_GATE, new ResourceLocation(AstralSorcery.MODID, "block/wood_raw"));
+        fenceGateBlock(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE, new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
     }
 }

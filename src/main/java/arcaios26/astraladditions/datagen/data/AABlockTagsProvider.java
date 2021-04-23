@@ -31,17 +31,17 @@ public class AABlockTagsProvider extends BlockTagsProvider {
                 .add(BlocksAA.BLACK_MARBLE_WALL_CHISELED)
                 .add(BlocksAA.BLACK_MARBLE_WALL_ARCH);
 
-        //tag(BlockTags.FENCES)
-        //        .add(BlocksAA.INFUSED_WOOD_FENCE)
-        //        .add(BlocksAA.ENRICHED_INFUSED_WOOD_FENCE);
+        tag(BlockTags.FENCES)
+                .add(BlocksAA.INFUSED_WOOD_FENCE)
+                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE);
 
-        //tag(BlockTags.WOODEN_FENCES)
-        //        .add(BlocksAA.INFUSED_WOOD_FENCE)
-        //        .add(BlocksAA.ENRICHED_INFUSED_WOOD_FENCE);
+        tag(BlockTags.WOODEN_FENCES)
+                .add(BlocksAA.INFUSED_WOOD_FENCE)
+                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE);
 
-        //tag(BlockTags.FENCE_GATES)
-        //        .add(BlocksAA.INFUSED_WOOD_FENCE_GATE)
-        //        .add(BlocksAA.ENRICHED_INFUSED_WOOD_FENCE_GATE);
+        tag(BlockTags.FENCE_GATES)
+                .add(BlocksAA.INFUSED_WOOD_FENCE_GATE)
+                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE);
     }
 
     private Builder<Block> tag(ITag.INamedTag<Block> tag) {
