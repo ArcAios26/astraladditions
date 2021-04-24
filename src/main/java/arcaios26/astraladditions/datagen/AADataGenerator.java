@@ -3,6 +3,7 @@ package arcaios26.astraladditions.datagen;
 import arcaios26.astraladditions.datagen.assets.AABlockStateProvider;
 import arcaios26.astraladditions.datagen.assets.AAItemModelProvider;
 import arcaios26.astraladditions.datagen.data.AABlockTagsProvider;
+import arcaios26.astraladditions.datagen.data.AALanguageProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +22,7 @@ public class AADataGenerator {
         if (event.includeClient()) {
             gen.addProvider(new AABlockStateProvider(gen, event.getExistingFileHelper()));
             gen.addProvider(new AAItemModelProvider(gen, event.getExistingFileHelper()));
+            gen.addProvider(new AALanguageProvider(gen, "en_us"));
         }
     }
 }
