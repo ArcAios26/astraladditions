@@ -37,11 +37,15 @@ public class BlocksRegistry {
         BLACK_MARBLE_WALL_BRICKS = makeWall(BlocksAS.BLACK_MARBLE_BRICKS.getDefaultState(), "black_marble_wall_bricks");
         BLACK_MARBLE_WALL_ARCH = makeWall(BlocksAS.BLACK_MARBLE_ARCH.getDefaultState(), "black_marble_wall_arch");
 
+        STARMETAL_WALL = makeWall(BlocksAS.STARMETAL.getDefaultState(), "starmetal_wall");
+
         INFUSED_WOOD_FENCE = makeFence(BlocksAS.INFUSED_WOOD.getDefaultState(), "infused_wood_fence");
         VIBRANT_INFUSED_WOOD_FENCE = makeFence(BlocksAS.INFUSED_WOOD_ENRICHED.getDefaultState(), "vibrant_infused_wood_fence");
+        STARMETAL_FENCE = makeFence(BlocksAS.STARMETAL.getDefaultState(), "starmetal_fence");
 
         INFUSED_WOOD_FENCE_GATE = makeFenceGate(BlocksAS.INFUSED_WOOD.getDefaultState(), "infused_wood_fence_gate");
         VIBRANT_INFUSED_WOOD_FENCE_GATE = makeFenceGate(BlocksAS.INFUSED_WOOD_ENRICHED.getDefaultState(), "vibrant_infused_wood_fence_gate");
+        STARMETAL_FENCE_GATE = makeFenceGate(BlocksAS.STARMETAL.getDefaultState(), "starmetal_fence_gate");
     }
 
     private static WallTemplateBlock makeWall(BlockState base, String name) {

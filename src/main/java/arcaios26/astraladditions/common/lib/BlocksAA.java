@@ -22,9 +22,13 @@ public class BlocksAA {
     public static WallTemplateBlock BLACK_MARBLE_WALL_BRICKS;
     public static WallTemplateBlock BLACK_MARBLE_WALL_ARCH;
 
+    public static WallTemplateBlock STARMETAL_WALL;
+
     public static FenceTemplateBlock INFUSED_WOOD_FENCE;
     public static FenceTemplateBlock VIBRANT_INFUSED_WOOD_FENCE;
+    public static FenceTemplateBlock STARMETAL_FENCE;
 
     public static FenceGateTemplateBlock INFUSED_WOOD_FENCE_GATE;
     public static FenceGateTemplateBlock VIBRANT_INFUSED_WOOD_FENCE_GATE;
+    public static FenceGateTemplateBlock STARMETAL_FENCE_GATE;
 }

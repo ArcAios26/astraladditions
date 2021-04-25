@@ -14,6 +14,9 @@
   "block.astraladditions.marble_wall_chiseled": "Chiseled Marble Wall",
   "block.astraladditions.marble_wall_engraved": "Engraved Marble Wall",
   "block.astraladditions.marble_wall_runed": "Runed Marble Wall",
+  "block.astraladditions.starmetal_fence": "Starmetal Fence",
+  "block.astraladditions.starmetal_fence_gate": "Starmetal Fence Gate",
+  "block.astraladditions.starmetal_wall": "Starmetal Wall",
   "block.astraladditions.vibrant_infused_wood_fence": "Vibrant Infused Wood Fence",
   "block.astraladditions.vibrant_infused_wood_fence_gate": "Vibrant Infused Wood Fence Gate",
   "itemGroup.astraladditions": "Astral Additions"

@@ -29,11 +29,13 @@ public class AABlockTagsProvider extends BlockTagsProvider {
                 .add(BlocksAA.BLACK_MARBLE_WALL_RUNED)
                 .add(BlocksAA.BLACK_MARBLE_WALL_ENGRAVED)
                 .add(BlocksAA.BLACK_MARBLE_WALL_CHISELED)
-                .add(BlocksAA.BLACK_MARBLE_WALL_ARCH);
+                .add(BlocksAA.BLACK_MARBLE_WALL_ARCH)
+                .add(BlocksAA.STARMETAL_WALL);
 
         tag(BlockTags.FENCES)
                 .add(BlocksAA.INFUSED_WOOD_FENCE)
-                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE);
+                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE)
+                .add(BlocksAA.STARMETAL_FENCE);
 
         tag(BlockTags.WOODEN_FENCES)
                 .add(BlocksAA.INFUSED_WOOD_FENCE)
@@ -41,7 +43,8 @@ public class AABlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.FENCE_GATES)
                 .add(BlocksAA.INFUSED_WOOD_FENCE_GATE)
-                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE);
+                .add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE)
+                .add(BlocksAA.STARMETAL_FENCE_GATE);
     }
 
     private Builder<Block> tag(ITag.INamedTag<Block> tag) {

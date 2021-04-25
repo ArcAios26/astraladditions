@@ -30,10 +30,13 @@ public class AALanguageProvider extends LanguageProvider {
         add(BlocksAA.MARBLE_WALL_RUNED.getTranslationKey(), "Runed Marble Wall");
         add(BlocksAA.MARBLE_WALL_CHISELED.getTranslationKey(), "Chiseled Marble Wall");
         add(BlocksAA.MARBLE_WALL_ENGRAVED.getTranslationKey(), "Engraved Marble Wall");
+        add(BlocksAA.STARMETAL_WALL.getTranslationKey(), "Starmetal Wall");
         add(BlocksAA.INFUSED_WOOD_FENCE.getTranslationKey(), "Infused Wood Fence");
         add(BlocksAA.INFUSED_WOOD_FENCE_GATE.getTranslationKey(), "Infused Wood Fence Gate");
         add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE.getTranslationKey(), "Vibrant Infused Wood Fence");
         add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE.getTranslationKey(), "Vibrant Infused Wood Fence Gate");
+        add(BlocksAA.STARMETAL_FENCE.getTranslationKey(), "Starmetal Fence");
+        add(BlocksAA.STARMETAL_FENCE_GATE.getTranslationKey(), "Starmetal Fence Gate");
 
         //Research Clusters
         add("astralsorcery.journal.research.ascension", "Ascension");
