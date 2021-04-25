@@ -1,3 +1,20 @@
 {
-  "block.astraladditions.black_marble_wall": "Sooty Marble Wall"
+  "astralsorcery.journal.research.ascension": "Ascension",
+  "block.astraladditions.black_marble_wall": "Sooty Marble Wall",
+  "block.astraladditions.black_marble_wall_arch": "Sooty Marble Arch Wall",
+  "block.astraladditions.black_marble_wall_bricks": "Sooty Marble Brick Wall",
+  "block.astraladditions.black_marble_wall_chiseled": "Sooty Chiseled Marble Wall",
+  "block.astraladditions.black_marble_wall_engraved": "Sooty Engraved Marble Wall",
+  "block.astraladditions.black_marble_wall_runed": "Sooty Runed Marble Wall",
+  "block.astraladditions.infused_wood_fence": "Infused Wood Fence",
+  "block.astraladditions.infused_wood_fence_gate": "Infused Wood Fence Gate",
+  "block.astraladditions.marble_wall": "Marble Wall",
+  "block.astraladditions.marble_wall_arch": "Marble Arch Wall",
+  "block.astraladditions.marble_wall_bricks": "Marble Brick Wall",
+  "block.astraladditions.marble_wall_chiseled": "Chiseled Marble Wall",
+  "block.astraladditions.marble_wall_engraved": "Engraved Marble Wall",
+  "block.astraladditions.marble_wall_runed": "Runed Marble Wall",
+  "block.astraladditions.vibrant_infused_wood_fence": "Vibrant Infused Wood Fence",
+  "block.astraladditions.vibrant_infused_wood_fence_gate": "Vibrant Infused Wood Fence Gate",
+  "itemGroup.astraladditions": "Astral Additions"
 }
