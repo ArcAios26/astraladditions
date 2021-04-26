@@ -1,5 +1,7 @@
 package arcaios26.astraladditions.datagen.assets;
 
+import arcaios26.astraladditions.AstralAdditions;
+import arcaios26.astraladditions.common.lib.ItemsAA;
 import hellfirepvp.astralsorcery.AstralSorcery;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
@@ -38,6 +40,8 @@ public class AAItemModelProvider extends ItemModelProvider {
         fenceGate("infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_raw"));
         fenceGate("vibrant_infused_wood_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/wood_infused"));
         fenceGate("starmetal_fence_gate", new ResourceLocation(AstralSorcery.MODID, "block/starmetal"));
+
+        singleTexture(ItemsAA.ASTRAL_RING.getRegistryName().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(MODID, "item/astral_ring"));
     }
     
 }

@@ -3,6 +3,7 @@ package arcaios26.astraladditions.datagen.data;
 import arcaios26.astraladditions.AstralAdditions;
 import arcaios26.astraladditions.common.CommonProxy;
 import arcaios26.astraladditions.common.lib.BlocksAA;
+import arcaios26.astraladditions.common.lib.ItemsAA;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -37,6 +38,9 @@ public class AALanguageProvider extends LanguageProvider {
         add(BlocksAA.VIBRANT_INFUSED_WOOD_FENCE_GATE.getTranslationKey(), "Vibrant Infused Wood Fence Gate");
         add(BlocksAA.STARMETAL_FENCE.getTranslationKey(), "Starmetal Fence");
         add(BlocksAA.STARMETAL_FENCE_GATE.getTranslationKey(), "Starmetal Fence Gate");
+
+        //Items
+        add(ItemsAA.ASTRAL_RING.getTranslationKey(), "Astral Ring");
 
         //Research Clusters
         add("astralsorcery.journal.research.ascension", "Ascension");
