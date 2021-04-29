@@ -13,6 +13,7 @@ import hellfirepvp.astralsorcery.common.network.play.server.PktPlayEffect;
 import hellfirepvp.astralsorcery.common.util.data.ByteBufUtils;
 import hellfirepvp.astralsorcery.common.util.data.Vector3;
 import hellfirepvp.astralsorcery.common.util.world.SkyCollectionHelper;
+import hellfirepvp.astralsorcery.common.util.world.WorldSeedCache;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,40 +51,42 @@ public class AstralRingItem extends Item {
                 PlayerEntity player = (PlayerEntity) livingEntity;
                 World world = player.getEntityWorld();
 
-                float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
-                if (distribution <= 1E-4) {
-                    return;
-                }
-                BlockPos center = player.getPosition();
-                int offsetX = center.getX();
-                int offsetZ = center.getZ();
-                BlockPos.Mutable mPos = new BlockPos.Mutable();
-                int minY = RenderingConfig.CONFIG.minYFosicDisplay.get();
+                if (WorldSeedCache.getSeedIfPresent(world.getDimensionKey()).isPresent()) {
+                    float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
+                    if (distribution <= 1E-4) {
+                        return;
+                    }
+                    BlockPos center = player.getPosition();
+                    int offsetX = center.getX();
+                    int offsetZ = center.getZ();
+                    BlockPos.Mutable mPos = new BlockPos.Mutable();
+                    int minY = RenderingConfig.CONFIG.minYFosicDisplay.get();
 
-                for (int xx = -48; xx <= 48; xx++) {
-                    for (int zz = -48; zz <= 48; zz++) {
-                        mPos.setPos(world.getHeight(Heightmap.Type.WORLD_SURFACE, mPos.setPos(offsetX + xx, 0, offsetZ + zz)));
-                        mPos.setY(Math.max(mPos.getY(), minY));
+                    for (int xx = -48; xx <= 48; xx++) {
+                        for (int zz = -48; zz <= 48; zz++) {
+                            mPos.setPos(world.getHeight(Heightmap.Type.WORLD_SURFACE, mPos.setPos(offsetX + xx, 0, offsetZ + zz)));
+                            mPos.setY(Math.max(mPos.getY(), minY));
 
-                        float perc = SkyCollectionHelper.getSkyNoiseDistributionClient(world.getDimensionKey(), mPos).get();
+                            float perc = SkyCollectionHelper.getSkyNoiseDistributionClient(world.getDimensionKey(), mPos).get();
 
-                        float fPerc = (float) Math.pow((perc - 0.4F) * 1.65F, 2);
-                        if (perc >= 0.4F && random.nextFloat() <= fPerc) {
-                            if (random.nextFloat() <= fPerc && random.nextInt(6) == 0) {
-
-                                EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
-                                        .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
-                                        .color(VFXColorFunction.constant(ColorsAS.RESONATOR_STARFIELD))
-                                        .setScaleMultiplier(4F)
-                                        .setAlphaMultiplier(distribution * fPerc);
-                                if (perc >= 0.8F && random.nextInt(3) == 0) {
+                            float fPerc = (float) Math.pow((perc - 0.4F) * 1.65F, 2);
+                            if (perc >= 0.4F && random.nextFloat() <= fPerc) {
+                                if (random.nextFloat() <= fPerc && random.nextInt(6) == 0) {
 
                                     EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
                                             .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
-                                            .setScaleMultiplier(0.3F)
-                                            .color(VFXColorFunction.WHITE)
-                                            .setGravityStrength(-0.001F)
-                                            .setAlphaMultiplier(distribution);
+                                            .color(VFXColorFunction.constant(ColorsAS.RESONATOR_STARFIELD))
+                                            .setScaleMultiplier(4F)
+                                            .setAlphaMultiplier(distribution * fPerc);
+                                    if (perc >= 0.8F && random.nextInt(3) == 0) {
+
+                                        EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
+                                                .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
+                                                .setScaleMultiplier(0.3F)
+                                                .color(VFXColorFunction.WHITE)
+                                                .setGravityStrength(-0.001F)
+                                                .setAlphaMultiplier(distribution);
+                                    }
                                 }
                             }
                         }
