@@ -1,6 +1,7 @@
 package arcaios26.astraladditions.common.item.ring;
 
 import arcaios26.astraladditions.common.CommonProxy;
+import arcaios26.astraladditions.common.util.ItemNBTUtils;
 import hellfirepvp.astralsorcery.client.data.config.entry.RenderingConfig;
 import hellfirepvp.astralsorcery.client.effect.function.VFXColorFunction;
 import hellfirepvp.astralsorcery.client.effect.handler.EffectHelper;
@@ -33,6 +34,8 @@ import top.theillusivec4.curios.common.capability.CurioItemCapability;
 
 import javax.annotation.Nullable;
 
+import static arcaios26.astraladditions.common.util.ItemNBTUtils.*;
+
 public class AstralRingItem extends Item {
 
     public AstralRingItem() {
@@ -50,42 +53,47 @@ public class AstralRingItem extends Item {
 
                 PlayerEntity player = (PlayerEntity) livingEntity;
                 World world = player.getEntityWorld();
+                if (stack.hasTag()) {
+                    if (stack.getTag().contains(ACTIVE_STARLIGHT)) {
+                        if (stack.getTag().getBoolean(ACTIVE_STARLIGHT)) {
+                            if (WorldSeedCache.getSeedIfPresent(world.getDimensionKey()).isPresent()) {
+                                float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
+                                if (distribution <= 1E-4) {
+                                    return;
+                                }
+                                BlockPos center = player.getPosition();
+                                int offsetX = center.getX();
+                                int offsetZ = center.getZ();
+                                BlockPos.Mutable mPos = new BlockPos.Mutable();
+                                int minY = RenderingConfig.CONFIG.minYFosicDisplay.get();
 
-                if (WorldSeedCache.getSeedIfPresent(world.getDimensionKey()).isPresent()) {
-                    float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
-                    if (distribution <= 1E-4) {
-                        return;
-                    }
-                    BlockPos center = player.getPosition();
-                    int offsetX = center.getX();
-                    int offsetZ = center.getZ();
-                    BlockPos.Mutable mPos = new BlockPos.Mutable();
-                    int minY = RenderingConfig.CONFIG.minYFosicDisplay.get();
+                                for (int xx = -48; xx <= 48; xx++) {
+                                    for (int zz = -48; zz <= 48; zz++) {
+                                        mPos.setPos(world.getHeight(Heightmap.Type.WORLD_SURFACE, mPos.setPos(offsetX + xx, 0, offsetZ + zz)));
+                                        mPos.setY(Math.max(mPos.getY(), minY));
 
-                    for (int xx = -48; xx <= 48; xx++) {
-                        for (int zz = -48; zz <= 48; zz++) {
-                            mPos.setPos(world.getHeight(Heightmap.Type.WORLD_SURFACE, mPos.setPos(offsetX + xx, 0, offsetZ + zz)));
-                            mPos.setY(Math.max(mPos.getY(), minY));
+                                        float perc = SkyCollectionHelper.getSkyNoiseDistributionClient(world.getDimensionKey(), mPos).get();
 
-                            float perc = SkyCollectionHelper.getSkyNoiseDistributionClient(world.getDimensionKey(), mPos).get();
+                                        float fPerc = (float) Math.pow((perc - 0.4F) * 1.65F, 2);
+                                        if (perc >= 0.4F && random.nextFloat() <= fPerc) {
+                                            if (random.nextFloat() <= fPerc && random.nextInt(6) == 0) {
 
-                            float fPerc = (float) Math.pow((perc - 0.4F) * 1.65F, 2);
-                            if (perc >= 0.4F && random.nextFloat() <= fPerc) {
-                                if (random.nextFloat() <= fPerc && random.nextInt(6) == 0) {
+                                                EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
+                                                        .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
+                                                        .color(VFXColorFunction.constant(ColorsAS.RESONATOR_STARFIELD))
+                                                        .setScaleMultiplier(4F)
+                                                        .setAlphaMultiplier(distribution * fPerc);
+                                                if (perc >= 0.8F && random.nextInt(3) == 0) {
 
-                                    EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
-                                            .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
-                                            .color(VFXColorFunction.constant(ColorsAS.RESONATOR_STARFIELD))
-                                            .setScaleMultiplier(4F)
-                                            .setAlphaMultiplier(distribution * fPerc);
-                                    if (perc >= 0.8F && random.nextInt(3) == 0) {
-
-                                        EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
-                                                .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
-                                                .setScaleMultiplier(0.3F)
-                                                .color(VFXColorFunction.WHITE)
-                                                .setGravityStrength(-0.001F)
-                                                .setAlphaMultiplier(distribution);
+                                                    EffectHelper.of(EffectTemplatesAS.GENERIC_PARTICLE)
+                                                            .spawn(new Vector3(mPos).add(random.nextFloat(), 0.15, random.nextFloat()))
+                                                            .setScaleMultiplier(0.3F)
+                                                            .color(VFXColorFunction.WHITE)
+                                                            .setGravityStrength(-0.001F)
+                                                            .setAlphaMultiplier(distribution);
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -96,42 +104,69 @@ public class AstralRingItem extends Item {
 
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity) {
-                World world = livingEntity.getEntityWorld();
-                Entity entity = (Entity) livingEntity;
+                if (stack.hasTag()) {
+                    if (stack.getTag().contains(ACTIVE_FLUID))
+                        if (stack.getTag().getBoolean(ACTIVE_FLUID)) {
+                            World world = livingEntity.getEntityWorld();
+                            Entity entity = (Entity) livingEntity;
 
-                if (!world.isRemote()) {
+                            if (!world.isRemote()) {
 
-                    float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
-                    if (distribution <= 1E-4) {
-                        return;
-                    }
-                    if (random.nextFloat() < distribution && random.nextInt(12) == 0) {
-                        int offsetX = random.nextInt(30) * (random.nextBoolean() ? 1 : -1);
-                        int offsetZ = random.nextInt(30) * (random.nextBoolean() ? 1 : -1);
-
-                        BlockPos pos = world.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                                new BlockPos(entity.getPosition()).add(offsetX, 0, offsetZ));
-                        if (pos.distanceSq(entity.getPosition()) > 5625) { // 75 blocks away
-                            return;
-                        }
-
-                        IChunk ch = world.getChunk(pos);
-                        if (ch instanceof Chunk) {
-                            ((Chunk) ch).getCapability(CapabilitiesAS.CHUNK_FLUID).ifPresent(entry -> {
-                                FluidStack display = entry.drain(1, IFluidHandler.FluidAction.SIMULATE);
-                                if (!display.isEmpty()) {
-                                    PktPlayEffect pkt = new PktPlayEffect(PktPlayEffect.Type.LIQUID_FOUNTAIN).addData(buf -> {
-                                        ByteBufUtils.writeFluidStack(buf, display);
-                                        ByteBufUtils.writeVector(buf, new Vector3(pos));
-                                    });
-                                    PacketChannel.CHANNEL.sendToAllAround(pkt, PacketChannel.pointFromPos(world, pos, 32));
+                                float distribution = DayTimeHelper.getCurrentDaytimeDistribution(world);
+                                if (distribution <= 1E-4) {
+                                    return;
                                 }
-                            });
-                        }
-                    }
+                                if (random.nextFloat() < distribution && random.nextInt(12) == 0) {
+                                    int offsetX = random.nextInt(30) * (random.nextBoolean() ? 1 : -1);
+                                    int offsetZ = random.nextInt(30) * (random.nextBoolean() ? 1 : -1);
 
+                                    BlockPos pos = world.getHeight(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                                            new BlockPos(entity.getPosition()).add(offsetX, 0, offsetZ));
+                                    if (pos.distanceSq(entity.getPosition()) > 5625) { // 75 blocks away
+                                        return;
+                                    }
+
+                                    IChunk ch = world.getChunk(pos);
+                                    if (ch instanceof Chunk) {
+                                        ((Chunk) ch).getCapability(CapabilitiesAS.CHUNK_FLUID).ifPresent(entry -> {
+                                            FluidStack display = entry.drain(1, IFluidHandler.FluidAction.SIMULATE);
+                                            if (!display.isEmpty()) {
+                                                PktPlayEffect pkt = new PktPlayEffect(PktPlayEffect.Type.LIQUID_FOUNTAIN).addData(buf -> {
+                                                    ByteBufUtils.writeFluidStack(buf, display);
+                                                    ByteBufUtils.writeVector(buf, new Vector3(pos));
+                                                });
+                                                PacketChannel.CHANNEL.sendToAllAround(pkt, PacketChannel.pointFromPos(world, pos, 32));
+                                            }
+                                        });
+                                    }
+                                }
+
+                            }
+                        }
                 }
+            }
+
+            @Override
+            public boolean canSync(String identifier, int index, LivingEntity livingEntity) {
+                return true;
             }
         });
     }
+
+    public static void toggleRing(ItemStack stack) {
+        if (!ItemNBTUtils.getOrCreateTag(stack).getBoolean(ACTIVE_TAG)) {
+            stack.getTag().putBoolean(ACTIVE_TAG, true);
+            stack.getTag().putBoolean(ACTIVE_STARLIGHT, true);
+        } else if (stack.getTag().getBoolean(ACTIVE_STARLIGHT) && !stack.getTag().getBoolean(ACTIVE_FLUID)) {
+            stack.getTag().putBoolean(ACTIVE_STARLIGHT, false);
+            stack.getTag().putBoolean(ACTIVE_FLUID, true);
+        } else if (!stack.getTag().getBoolean(ACTIVE_STARLIGHT) && stack.getTag().getBoolean(ACTIVE_FLUID)) {
+            stack.getTag().putBoolean(ACTIVE_STARLIGHT, true);
+        } else {
+            stack.getTag().putBoolean(ACTIVE_TAG, false);
+            stack.getTag().putBoolean(ACTIVE_STARLIGHT, false);
+            stack.getTag().putBoolean(ACTIVE_FLUID, false);
+        }
+    }
+
 }

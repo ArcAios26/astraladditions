@@ -3,6 +3,7 @@ package arcaios26.astraladditions.common;
 import arcaios26.astraladditions.AstralAdditions;
 import arcaios26.astraladditions.client.registry.ResearchRegistry;
 import arcaios26.astraladditions.common.integrations.CuriosIntegration;
+import arcaios26.astraladditions.common.network.AANetwork;
 import arcaios26.astraladditions.common.registry.internal.InternalRegistryPrimer;
 import arcaios26.astraladditions.common.registry.internal.PrimerEventHandler;
 import hellfirepvp.astralsorcery.common.base.Mods;
@@ -51,7 +52,7 @@ public class CommonProxy {
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
-
+        AANetwork.registerMessages();
     }
 
     private void onEnqueueIMC(InterModEnqueueEvent event) {

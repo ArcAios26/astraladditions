@@ -2,6 +2,7 @@ package arcaios26.astraladditions.client;
 
 import arcaios26.astraladditions.AstralAdditions;
 import arcaios26.astraladditions.client.lib.TexturesAA;
+import arcaios26.astraladditions.client.registry.KeyBindingsRegistry;
 import arcaios26.astraladditions.client.resource.AssetLibrary;
 import arcaios26.astraladditions.client.resource.AssetPreLoader;
 import arcaios26.astraladditions.common.CommonProxy;
@@ -41,6 +42,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     private void onClientSetup(FMLClientSetupEvent event) {
+        KeyBindingsRegistry.init();
+
 
     }
 }
