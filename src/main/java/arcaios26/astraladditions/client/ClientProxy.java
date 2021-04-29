@@ -6,15 +6,20 @@ import arcaios26.astraladditions.client.registry.KeyBindingsRegistry;
 import arcaios26.astraladditions.client.resource.AssetLibrary;
 import arcaios26.astraladditions.client.resource.AssetPreLoader;
 import arcaios26.astraladditions.common.CommonProxy;
+import arcaios26.astraladditions.common.lib.ItemsAA;
 import hellfirepvp.astralsorcery.client.resource.AbstractRenderableTexture;
 import hellfirepvp.astralsorcery.client.screen.journal.progression.JournalCluster;
 import hellfirepvp.astralsorcery.client.screen.journal.progression.JournalProgressionClusterMapping;
 import hellfirepvp.astralsorcery.common.data.research.ResearchProgression;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.resources.IReloadableResourceManager;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+import static arcaios26.astraladditions.common.util.ItemNBTUtils.ACTIVE_GETTER;
+import static arcaios26.astraladditions.common.util.ItemNBTUtils.ACTIVE_NAME;
 
 public class ClientProxy extends CommonProxy {
 
@@ -44,6 +49,8 @@ public class ClientProxy extends CommonProxy {
     private void onClientSetup(FMLClientSetupEvent event) {
         KeyBindingsRegistry.init();
 
-
+        event.enqueueWork(() -> {
+            ItemModelsProperties.registerProperty(ItemsAA.ASTRAL_RING, ACTIVE_NAME, ACTIVE_GETTER);
+        });
     }
 }

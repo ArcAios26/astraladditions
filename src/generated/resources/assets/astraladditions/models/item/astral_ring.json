@@ -2,5 +2,13 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "astraladditions:item/astral_ring"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "astraladditions:active": 1.0
+      },
+      "model": "astraladditions:item/astral_ring_active"
+    }
+  ]
 }

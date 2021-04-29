@@ -150,6 +150,7 @@ public class AstralRingItem extends Item {
             public boolean canSync(String identifier, int index, LivingEntity livingEntity) {
                 return true;
             }
+            
         });
     }
 
