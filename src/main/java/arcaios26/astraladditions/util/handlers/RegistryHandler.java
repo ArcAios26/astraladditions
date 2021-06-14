@@ -1,5 +1,6 @@
 package arcaios26.astraladditions.util.handlers;
 
+import arcaios26.astraladditions.AstralAdditions;
 import arcaios26.astraladditions.Config;
 import arcaios26.astraladditions.init.BlockInit;
 import arcaios26.astraladditions.init.ItemInit;
@@ -66,8 +67,7 @@ public class RegistryHandler {
     }
 
     public static void initRegistries(FMLInitializationEvent event) {
-        
-        ClientKeyHelper.registerBindings();
+        AstralAdditions.proxy.registerKeyBinds();
         ResearchInit.init();
     }
 
