@@ -1,5 +1,6 @@
 package arcaios26.astraladditions.init;
 
+import arcaios26.astraladditions.Config;
 import arcaios26.astraladditions.crafting.AstralRingRecipe;
 import hellfirepvp.astralsorcery.common.block.BlockBlackMarble;
 import hellfirepvp.astralsorcery.common.block.BlockInfusedWood;
@@ -64,10 +65,12 @@ public class RecipeInit {
         registerAltarRecipe(new DiscoveryRecipe(rBlackMarbleWallRuned).setPassiveStarlightRequirement(0));
         registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFence).setPassiveStarlightRequirement(0));
         registerAltarRecipe(new DiscoveryRecipe(rInfusedWoodFenceGate).setPassiveStarlightRequirement(0));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalHelmet).setPassiveStarlightRequirement(0));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalChestplate).setPassiveStarlightRequirement(0));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalLeggings).setPassiveStarlightRequirement(0));
-        registerAltarRecipe(new DiscoveryRecipe(rStarmetalBoots).setPassiveStarlightRequirement(0));
+        if (Config.armorEnabled) {
+            registerAltarRecipe(new DiscoveryRecipe(rStarmetalHelmet).setPassiveStarlightRequirement(0));
+            registerAltarRecipe(new DiscoveryRecipe(rStarmetalChestplate).setPassiveStarlightRequirement(0));
+            registerAltarRecipe(new DiscoveryRecipe(rStarmetalLeggings).setPassiveStarlightRequirement(0));
+            registerAltarRecipe(new DiscoveryRecipe(rStarmetalBoots).setPassiveStarlightRequirement(0));
+        }
         registerAltarRecipe(new DiscoveryRecipe(rStarmetalBlock).setPassiveStarlightRequirement(0));
         registerAltarRecipe(new DiscoveryRecipe(rStarmetalIngot).setPassiveStarlightRequirement(0));
     }
@@ -165,31 +168,33 @@ public class RecipeInit {
                         ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
                 .buildAndRegisterShapedRecipe();
 
-        rStarmetalHelmet = newShapedRecipe("helmet_starmetal", Item.getByNameOrId("astraladditions:helmet_starmetal"))
-                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
-                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
-                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
-                .buildAndRegisterShapedRecipe();
+        if (Config.armorEnabled) {
+            rStarmetalHelmet = newShapedRecipe("helmet_starmetal", Item.getByNameOrId("astraladditions:helmet_starmetal"))
+                    .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                            ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
+                            ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                    .buildAndRegisterShapedRecipe();
 
-        rStarmetalChestplate = newShapedRecipe("chestplate_starmetal", Item.getByNameOrId("astraladditions:chestplate_starmetal"))
-                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
-                        ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_RIGHT,
-                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
-                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
-                .buildAndRegisterShapedRecipe();
+            rStarmetalChestplate = newShapedRecipe("chestplate_starmetal", Item.getByNameOrId("astraladditions:chestplate_starmetal"))
+                    .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                            ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_RIGHT,
+                            ShapedRecipeSlot.LEFT, ShapedRecipeSlot.CENTER, ShapedRecipeSlot.RIGHT,
+                            ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_CENTER, ShapedRecipeSlot.LOWER_RIGHT)
+                    .buildAndRegisterShapedRecipe();
 
-        rStarmetalLeggings = newShapedRecipe("leggings_starmetal", Item.getByNameOrId("astraladditions:leggings_starmetal"))
-                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
-                        ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_CENTER, ShapedRecipeSlot.UPPER_RIGHT,
-                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
-                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
-                .buildAndRegisterShapedRecipe();
+            rStarmetalLeggings = newShapedRecipe("leggings_starmetal", Item.getByNameOrId("astraladditions:leggings_starmetal"))
+                    .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                            ShapedRecipeSlot.UPPER_LEFT, ShapedRecipeSlot.UPPER_CENTER, ShapedRecipeSlot.UPPER_RIGHT,
+                            ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
+                            ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                    .buildAndRegisterShapedRecipe();
 
-        rStarmetalBoots = newShapedRecipe("boots_starmetal", Item.getByNameOrId("astraladditions:boots_starmetal"))
-                .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
-                        ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
-                        ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
-                .buildAndRegisterShapedRecipe();
+            rStarmetalBoots = newShapedRecipe("boots_starmetal", Item.getByNameOrId("astraladditions:boots_starmetal"))
+                    .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,
+                            ShapedRecipeSlot.LEFT, ShapedRecipeSlot.RIGHT,
+                            ShapedRecipeSlot.LOWER_LEFT, ShapedRecipeSlot.LOWER_RIGHT)
+                    .buildAndRegisterShapedRecipe();
+        }
 
         rStarmetalBlock = newShapedRecipe("block_starmetal", BlockInit.BLOCK_STARMETAL)
                 .addPart(OreDictAlias.ITEM_STARMETAL_INGOT,

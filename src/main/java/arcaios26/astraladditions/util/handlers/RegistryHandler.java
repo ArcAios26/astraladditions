@@ -75,5 +75,6 @@ public class RegistryHandler {
         if (config.hasChanged()) {
             config.save();
         }
+
     }
 }

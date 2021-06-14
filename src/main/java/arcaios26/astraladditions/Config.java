@@ -28,7 +28,7 @@ public class Config {
 
     private static void initGeneralConfig(Configuration config) {
         config.addCustomCategoryComment(CATEGORY_GENERAL, "General Configuration");
-        config.getBoolean("ringEnabled", CATEGORY_GENERAL, ringEnabled, "enable astral ring. default: true");
-        config.getBoolean("armorEnabled", CATEGORY_GENERAL, armorEnabled, "enable Starmetal Armor. default: false");
+        ringEnabled = config.getBoolean("ringEnabled", CATEGORY_GENERAL, ringEnabled, "enable astral ring. default: true");
+        armorEnabled = config.getBoolean("armorEnabled", CATEGORY_GENERAL, armorEnabled, "enable Starmetal Armor. default: false");
     }
 }
