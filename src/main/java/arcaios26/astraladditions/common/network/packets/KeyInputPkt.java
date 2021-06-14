@@ -35,8 +35,6 @@ public class KeyInputPkt {
                     if (CuriosApi.getCuriosHelper().findEquippedCurio(ItemsAA.ASTRAL_RING, ctx.get().getSender()).isPresent()) {
                         ItemStack stack = CuriosApi.getCuriosHelper().findEquippedCurio(ItemsAA.ASTRAL_RING, ctx.get().getSender()).get().right;
                         ItemsAA.ASTRAL_RING.toggleRing(stack);
-                        System.out.println("Call ring toggle");
-                        System.out.println(stack.getTag().getBoolean(ACTIVE_TAG));
                     }
                     break;
             }
