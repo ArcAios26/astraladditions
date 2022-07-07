@@ -53,7 +53,7 @@ public class AstralRingRecipe extends TraitRecipe {
     @Nonnull
     @Override
     public ItemStack getOutput(ShapeMap centralGridMap, TileAltar altar) {
-        return new ItemStack(Objects.requireNonNull(getByNameOrId("astraladditions:astral_ring")));
+        return new ItemStack(Objects.requireNonNull(getByNameOrId("astraladditions:ring_astral")));
     }
 }
 
