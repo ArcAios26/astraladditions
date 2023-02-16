@@ -6,5 +6,7 @@
   "mixins": [
     "ItemTomeMixin"
   ],
+  "client": [
+  ],
   "minVersion": "0.8"
 }

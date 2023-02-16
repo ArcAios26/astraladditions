@@ -1,17 +1,18 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://libraries.minecraft.net/' }
+        maven { url = 'https://plugins.gradle.org/m2/' }
+        maven { url = 'https://repo.spongepowered.org/maven/' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -26,6 +27,8 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 
 mixin {
     add sourceSets.main, "astraladditions.refmap.json"
+	
+	config "astraladditions.mixins.json"
 }
 
 minecraft {
@@ -130,25 +133,22 @@ repositories {
 
 dependencies {
 
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.37'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.39'
+	annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    compileOnly "hellfirepvp.astralsorcery:astralsorcery:${mc_version}-${as_version}"
-    runtimeOnly "hellfirepvp.astralsorcery:astralsorcery:${mc_version}-${as_version}:deobf"
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.8.2:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.8.2")
+	
+	implementation fg.deobf("hellfirepvp.observerlib:observerlib:1.16.5-1.5.3.v78") { transitive = false }
 
-    compileOnly "hellfirepvp.observerlib:observerlib:${mc_version}-${observerlib_version}"
-    runtimeOnly "hellfirepvp.observerlib:observerlib:${mc_version}-${observerlib_version}:deobf"
+    implementation fg.deobf("hellfirepvp.astralsorcery:astralsorcery-1.16.5:1.16.4-1.14.1.v106") { transitive = false }
 
-    compileOnly "top.theillusivec4.curios:curios-forge:${curios_version}:api"
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    implementation fg.deobf("mezz.jei:jei-1.16.5:7.7.1.1004")
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    implementation fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:7.1.2.516")
 
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}")
-
-    compileOnly fg.deobf("vazkii.botania:Botania:${mc_version}-${botania_version}:api")
-    runtimeOnly fg.deobf("vazkii.botania:Botania:${mc_version}-${botania_version}")
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-53.3:api")
+	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.16.4-53.3")
 
 }
 
